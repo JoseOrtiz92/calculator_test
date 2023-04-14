@@ -1,11 +1,14 @@
 package com.example.calculatormicro.controller;
 
 import com.example.calculatormicro.model.dto.ErrorResponse;
+import com.example.calculatormicro.service.CalculatorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,14 +19,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Optional;
 
+/**
+ * The type Calculator controller.
+ */
 @RestController
 @RequiredArgsConstructor
 @Validated
 @RequestMapping(path = "v1")
 public class CalculatorController {
 
+    /**
+     * The Calculator service.
+     */
+    @Autowired
+    private CalculatorService calculatorService;
+
+    /**
+     * Plus method controller.
+     *
+     * @param value1 the value 1
+     * @param value2 the value 2
+     * @return the operation result
+     */
     @Operation(description = "Endpoint para sumar 2 valores",
             summary = "Suma de 2 valores",
             responses = {
@@ -53,9 +71,17 @@ public class CalculatorController {
                 @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value1", defaultValue = "0") BigDecimal value1,
                 @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value2", defaultValue = "0") BigDecimal value2
             ){
-        return ResponseEntity.of(Optional.of(BigDecimal.ZERO));
+        BigDecimal result = calculatorService.plus(value1, value2);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    /**
+     * Subtract method controller.
+     *
+     * @param value1 the value 1
+     * @param value2 the value 2
+     * @return the operation result
+     */
     @Operation(description = "Endpoint para restar 2 valores",
             summary = "Resta de 2 valores",
             responses = {
@@ -85,6 +111,7 @@ public class CalculatorController {
             @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value1", defaultValue = "0") BigDecimal value1,
             @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value2", defaultValue = "0") BigDecimal value2
     ){
-        return ResponseEntity.of(Optional.of(BigDecimal.ZERO));
+        BigDecimal result = calculatorService.subtract(value1, value2);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
