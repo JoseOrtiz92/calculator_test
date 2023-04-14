@@ -55,4 +55,36 @@ public class CalculatorController {
             ){
         return ResponseEntity.of(Optional.of(BigDecimal.ZERO));
     }
+
+    @Operation(description = "Endpoint para restar 2 valores",
+            summary = "Resta de 2 valores",
+            responses = {
+                    @ApiResponse(
+                            description = "OK",
+                            responseCode = "200",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))
+                    ),
+                    @ApiResponse(
+                            description = "BAD_REQUEST",
+                            responseCode = "400",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))
+                    ),
+                    @ApiResponse(
+                            description = "NOT_FOUND",
+                            responseCode = "404",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))
+                    ),
+                    @ApiResponse(
+                            description = "INTERNAL_SERVER_ERROR",
+                            responseCode = "500",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))
+                    )
+            })
+    @GetMapping(value = "/subtract")
+    public ResponseEntity<BigDecimal> subtract(
+            @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value1", defaultValue = "0") BigDecimal value1,
+            @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value2", defaultValue = "0") BigDecimal value2
+    ){
+        return ResponseEntity.of(Optional.of(BigDecimal.ZERO));
+    }
 }
