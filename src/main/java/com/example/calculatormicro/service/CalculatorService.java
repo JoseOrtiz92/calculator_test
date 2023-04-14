@@ -1,5 +1,7 @@
 package com.example.calculatormicro.service;
 
+import com.example.calculatormicro.model.dto.TracerDTO;
+
 import java.math.BigDecimal;
 
 /**
@@ -14,7 +16,7 @@ public interface CalculatorService {
      * @param value2 the value 2
      * @return the big decimal
      */
-    BigDecimal plus(BigDecimal value1, BigDecimal value2);
+    TracerDTO plus(BigDecimal value1, BigDecimal value2);
 
     /**
      * Subtract big decimal.
@@ -23,5 +25,5 @@ public interface CalculatorService {
      * @param value2 the value 2
      * @return the big decimal
      */
-    BigDecimal subtract(BigDecimal value1, BigDecimal value2);
+    TracerDTO subtract(BigDecimal value1, BigDecimal value2);
 }

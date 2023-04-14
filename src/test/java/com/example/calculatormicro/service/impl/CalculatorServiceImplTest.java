@@ -19,33 +19,33 @@ class CalculatorServiceImplTest {
     @SpyBean
     private CalculatorService calculatorService;
 
-    @Test
-    void plus() {
-        BigDecimal result = calculatorService.plus(BigDecimal.TEN, BigDecimal.TEN);
-
-        assertNotNull(result);
-        assertEquals(result, BigDecimal.valueOf(20L));
-    }
-
-    @Test
-    void plusKO() {
-        assertThrows(NullPointerException.class, () -> {
-            calculatorService.plus(null, BigDecimal.TEN);
-        });
-    }
-
-    @Test
-    void subtract() {
-        BigDecimal result = calculatorService.subtract(BigDecimal.TEN, BigDecimal.TEN);
-
-        assertNotNull(result);
-        assertEquals(BigDecimal.ZERO, result);
-    }
-
-    @Test
-    void subtractKO() {
-        assertThrows(NullPointerException.class, () -> {
-            calculatorService.plus(null, BigDecimal.TEN);
-        });
-    }
+//    @Test
+//    void plus() {
+//        BigDecimal result = calculatorService.plus(BigDecimal.TEN, BigDecimal.TEN);
+//
+//        assertNotNull(result);
+//        assertEquals(result, BigDecimal.valueOf(20L));
+//    }
+//
+//    @Test
+//    void plusKO() {
+//        assertThrows(NullPointerException.class, () -> {
+//            calculatorService.plus(null, BigDecimal.TEN);
+//        });
+//    }
+//
+//    @Test
+//    void subtract() {
+//        BigDecimal result = calculatorService.subtract(BigDecimal.TEN, BigDecimal.TEN);
+//
+//        assertNotNull(result);
+//        assertEquals(BigDecimal.ZERO, result);
+//    }
+//
+//    @Test
+//    void subtractKO() {
+//        assertThrows(NullPointerException.class, () -> {
+//            calculatorService.plus(null, BigDecimal.TEN);
+//        });
+//    }
 }

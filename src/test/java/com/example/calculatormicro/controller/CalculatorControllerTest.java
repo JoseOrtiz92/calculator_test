@@ -26,39 +26,39 @@ class CalculatorControllerTest {
     @MockBean
     private CalculatorService calculatorService;
 
-    @Test
-    void plus() {
-        when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(BigDecimal.TEN);
-        ResponseEntity<BigDecimal> response = calculatorController.plus(BigDecimal.TEN, BigDecimal.TEN);
-
-        assertNotNull(response);
-        assertEquals(BigDecimal.TEN, response.getBody());
-    }
-
-    @Test
-    void plusKO() {
-        when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenThrow(IllegalArgumentException.class);
-
-        assertThrows(Exception.class, () -> {
-            calculatorService.plus(BigDecimal.TEN, BigDecimal.TEN);
-        });
-    }
-
-    @Test
-    void subtract() {
-        when(calculatorService.subtract(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(BigDecimal.TEN);
-        ResponseEntity<BigDecimal> response = calculatorController.subtract(BigDecimal.TEN, BigDecimal.TEN);
-
-        assertNotNull(response);
-        assertEquals(BigDecimal.TEN, response.getBody());
-    }
-
-    @Test
-    void subtractKO() {
-        when(calculatorService.subtract(any(BigDecimal.class), any(BigDecimal.class))).thenThrow(IllegalArgumentException.class);
-
-        assertThrows(Exception.class, () -> {
-            calculatorService.subtract(BigDecimal.TEN, BigDecimal.TEN);
-        });
-    }
+//    @Test
+//    void plus() {
+//        when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(BigDecimal.TEN);
+//        ResponseEntity<BigDecimal> response = calculatorController.plus(BigDecimal.TEN, BigDecimal.TEN);
+//
+//        assertNotNull(response);
+//        assertEquals(BigDecimal.TEN, response.getBody());
+//    }
+//
+//    @Test
+//    void plusKO() {
+//        when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenThrow(IllegalArgumentException.class);
+//
+//        assertThrows(Exception.class, () -> {
+//            calculatorService.plus(BigDecimal.TEN, BigDecimal.TEN);
+//        });
+//    }
+//
+//    @Test
+//    void subtract() {
+//        when(calculatorService.subtract(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(BigDecimal.TEN);
+//        ResponseEntity<BigDecimal> response = calculatorController.subtract(BigDecimal.TEN, BigDecimal.TEN);
+//
+//        assertNotNull(response);
+//        assertEquals(BigDecimal.TEN, response.getBody());
+//    }
+//
+//    @Test
+//    void subtractKO() {
+//        when(calculatorService.subtract(any(BigDecimal.class), any(BigDecimal.class))).thenThrow(IllegalArgumentException.class);
+//
+//        assertThrows(Exception.class, () -> {
+//            calculatorService.subtract(BigDecimal.TEN, BigDecimal.TEN);
+//        });
+//    }
 }

@@ -1,6 +1,7 @@
 package com.example.calculatormicro.controller;
 
 import com.example.calculatormicro.model.dto.ErrorResponse;
+import com.example.calculatormicro.model.dto.TracerDTO;
 import com.example.calculatormicro.service.CalculatorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -66,11 +67,11 @@ public class CalculatorController {
                     )
             })
     @GetMapping(value = "/plus")
-    public ResponseEntity<BigDecimal> plus(
+    public ResponseEntity<TracerDTO> plus(
                 @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value1", defaultValue = "0") BigDecimal value1,
                 @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value2", defaultValue = "0") BigDecimal value2
             ){
-        BigDecimal result = calculatorService.plus(value1, value2);
+        TracerDTO result = calculatorService.plus(value1, value2);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -106,11 +107,11 @@ public class CalculatorController {
                     )
             })
     @GetMapping(value = "/subtract")
-    public ResponseEntity<BigDecimal> subtract(
+    public ResponseEntity<TracerDTO> subtract(
             @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value1", defaultValue = "0") BigDecimal value1,
             @NotNull(message = "El valor no puede ser null") @RequestParam(value = "value2", defaultValue = "0") BigDecimal value2
     ){
-        BigDecimal result = calculatorService.subtract(value1, value2);
+        TracerDTO result = calculatorService.subtract(value1, value2);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
