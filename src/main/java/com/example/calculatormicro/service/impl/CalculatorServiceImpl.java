@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+/**
+ * The type Calculator service impl.
+ */
 @Service
 @Slf4j
 public class CalculatorServiceImpl implements CalculatorService {
