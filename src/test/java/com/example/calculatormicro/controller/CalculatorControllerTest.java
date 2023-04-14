@@ -26,17 +26,13 @@ class CalculatorControllerTest {
     @MockBean
     private CalculatorService calculatorService;
 
-//    @BeforeEach
-//    void setUp() {
-//        calculatorController = new CalculatorController(calculatorService);
-//    }
-
     @Test
     void plus() {
         when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(BigDecimal.TEN);
         ResponseEntity<BigDecimal> response = calculatorController.plus(BigDecimal.TEN, BigDecimal.TEN);
 
         assertNotNull(response);
+        assertEquals(BigDecimal.TEN, response.getBody());
     }
 
     @Test
@@ -54,6 +50,7 @@ class CalculatorControllerTest {
         ResponseEntity<BigDecimal> response = calculatorController.subtract(BigDecimal.TEN, BigDecimal.TEN);
 
         assertNotNull(response);
+        assertEquals(BigDecimal.TEN, response.getBody());
     }
 
     @Test
