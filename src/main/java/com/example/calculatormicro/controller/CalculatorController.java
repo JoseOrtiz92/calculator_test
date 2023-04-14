@@ -47,8 +47,7 @@ public class CalculatorController {
             responses = {
                     @ApiResponse(
                             description = "OK",
-                            responseCode = "200",
-                            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorResponse.class))
+                            responseCode = "200"
                     ),
                     @ApiResponse(
                             description = "BAD_REQUEST",
