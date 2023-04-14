@@ -1,7 +1,7 @@
 package com.example.calculatormicro.controller;
 
+import com.example.calculatormicro.model.dto.TracerDTO;
 import com.example.calculatormicro.service.CalculatorService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,39 +26,43 @@ class CalculatorControllerTest {
     @MockBean
     private CalculatorService calculatorService;
 
-//    @Test
-//    void plus() {
-//        when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(BigDecimal.TEN);
-//        ResponseEntity<BigDecimal> response = calculatorController.plus(BigDecimal.TEN, BigDecimal.TEN);
-//
-//        assertNotNull(response);
-//        assertEquals(BigDecimal.TEN, response.getBody());
-//    }
-//
-//    @Test
-//    void plusKO() {
-//        when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenThrow(IllegalArgumentException.class);
-//
-//        assertThrows(Exception.class, () -> {
-//            calculatorService.plus(BigDecimal.TEN, BigDecimal.TEN);
-//        });
-//    }
-//
-//    @Test
-//    void subtract() {
-//        when(calculatorService.subtract(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(BigDecimal.TEN);
-//        ResponseEntity<BigDecimal> response = calculatorController.subtract(BigDecimal.TEN, BigDecimal.TEN);
-//
-//        assertNotNull(response);
-//        assertEquals(BigDecimal.TEN, response.getBody());
-//    }
-//
-//    @Test
-//    void subtractKO() {
-//        when(calculatorService.subtract(any(BigDecimal.class), any(BigDecimal.class))).thenThrow(IllegalArgumentException.class);
-//
-//        assertThrows(Exception.class, () -> {
-//            calculatorService.subtract(BigDecimal.TEN, BigDecimal.TEN);
-//        });
-//    }
+    @Test
+    void plus() {
+        TracerDTO responseDTO = TracerDTO.builder().result("5").build();
+
+        when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(responseDTO);
+        ResponseEntity<TracerDTO> response = calculatorController.plus(BigDecimal.TEN, BigDecimal.TEN);
+
+        assertNotNull(response);
+        assertEquals(responseDTO.getResult(), response.getBody().getResult());
+    }
+
+    @Test
+    void plusKO() {
+        when(calculatorService.plus(any(BigDecimal.class), any(BigDecimal.class))).thenThrow(IllegalArgumentException.class);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculatorService.plus(BigDecimal.TEN, BigDecimal.TEN);
+        });
+    }
+
+    @Test
+    void subtract() {
+        TracerDTO responseDTO = TracerDTO.builder().result("5").build();
+
+        when(calculatorService.subtract(any(BigDecimal.class), any(BigDecimal.class))).thenReturn(responseDTO);
+        ResponseEntity<TracerDTO> response = calculatorController.subtract(BigDecimal.TEN, BigDecimal.TEN);
+
+        assertNotNull(response);
+        assertEquals(responseDTO.getResult(), response.getBody().getResult());
+    }
+
+    @Test
+    void subtractKO() {
+        when(calculatorService.subtract(any(BigDecimal.class), any(BigDecimal.class))).thenThrow(IllegalArgumentException.class);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculatorService.subtract(BigDecimal.TEN, BigDecimal.TEN);
+        });
+    }
 }
